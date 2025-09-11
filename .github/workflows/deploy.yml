@@ -65,7 +65,7 @@ jobs:
         run: tar -tf ./archive.tar.gz
 
       - name: Untar artifact
-        run: tar -zxf ./archive.tar.gz deploy.sh
+        run: tar -zxf ./archive.tar.gz ./deploy.sh
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
