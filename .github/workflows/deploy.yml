@@ -61,6 +61,9 @@ jobs:
         with:
           name: nl-design-system-demo
 
+      - name: List files in artifact
+        run: tar -tf ./archive.tar.gz
+
       - name: Untar artifact
         run: tar -zxf ./archive.tar.gz deploy.sh
 
