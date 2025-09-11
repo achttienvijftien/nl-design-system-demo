@@ -43,7 +43,8 @@ function App() {
                                 {
                                     municipalities.map(
                                         (municipalityOption, index) =>
-                                            <SelectOption value={index}>{municipalityOption.name}</SelectOption>
+                                            <SelectOption
+                                                value={index}>{municipalityOption.name} ({municipalityOption.stability})</SelectOption>
                                     )
                                 }
                             </Select>
