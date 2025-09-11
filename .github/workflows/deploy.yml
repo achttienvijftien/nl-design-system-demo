@@ -1,0 +1,73 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install dependencies
+        run: pnpm build
+
+      - name: Prepare artifact
+        run: |
+          rm -rf node_modules .git
+          tar -zcf /tmp/archive.tar.gz .
+          mv /tmp/archive.tar.gz .
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: nl-design-system-demo
+          path: ./archive.tar.gz
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+    env:
+      DEPLOY_HOST: 'dmavps15.dma.nl'
+      DEPLOY_DIR: '/srv/www/nl-design-system-demo/'
+      DEPLOY_USER: 'web'
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: nl-design-system-demo
+
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          known_hosts: ${{ secrets.DEPLOY_SSH_KNOWN_HOSTS }}
+
+      - name: Prepare and deploy
+        run: |
+          export DEPLOY_HOSTS=$(printf '%s' "$DEPLOY_HOST" | tr ', ' ' ')
+          for host in $DEPLOY_HOSTS; do ./deploy.sh $DEPLOY_USER@$host $DEPLOY_DIR $GITHUB_RUN_NUMBER; done

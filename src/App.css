@@ -1,0 +1,26 @@
+body {
+    font-size: 16px;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.sticky-bar {
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 2rem;
+}
+
+.content-wrapper {
+    padding: 1rem;
+}
+
+.publication {
+    margin-bottom: 1rem;
+}
+
+.publication-meta {
+    margin: .5rem 0;
+}
