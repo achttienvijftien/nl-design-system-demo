@@ -52,7 +52,7 @@ jobs:
       name: 'production'
     env:
       DEPLOY_HOST: 'dmavps15.dma.nl'
-      DEPLOY_DIR: '/srv/www/nl-design-system-demo/'
+      DEPLOY_DIR: '/srv/www/nl-design-system-demo'
       DEPLOY_USER: 'web'
 
     steps:
@@ -60,9 +60,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: nl-design-system-demo
-
-      - name: List files in artifact
-        run: tar -tf ./archive.tar.gz
 
       - name: Untar artifact
         run: tar -zxf ./archive.tar.gz ./deploy.sh
