@@ -61,6 +61,9 @@ jobs:
         with:
           name: nl-design-system-demo
 
+      - name: Untar artifact
+        run: tar -zxf ./archive.tar.gz deploy.sh
+
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
