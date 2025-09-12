@@ -3,6 +3,7 @@ import './App.css'
 import {
     Fieldset,
     FieldsetLegend,
+    FormField,
     FormLabel,
     Heading2,
     HeadingGroup,
@@ -14,15 +15,25 @@ import {
 import {municipalities} from './municipalities'
 import {randomNumber} from "./utils"
 import Publications from "./Publications";
+import {Textbox} from "@utrecht/component-library-react";
+import {useDebouncedCallback} from "use-debounce";
 
 function App() {
-    const [municipality, setMunicipality] = useState(municipalities[randomNumber(0, municipalities.length - 1)]);
+    const [municipality, setMunicipality] = useState(municipalities[randomNumber(0, municipalities.length - 1)])
+    const [query, setQuery] = useState('')
+
+    const handleSearch = useDebouncedCallback(
+        (event) => {
+            setQuery(event.target.value)
+        },
+        500
+    )
 
     return (
         <>
             <div className={municipality.theme}>
                 <header className={"sticky-bar"}>
-                    <div>
+                    <div className={"sticky-bar-item"}>
                         <HeadingGroup>
                             <Heading2>NL Design System Demo</Heading2>
                             <Paragraph>Huidige
@@ -31,7 +42,13 @@ function App() {
                                     status={'stable' === (municipality.stability ?? 'unstable') ? 'safe' : 'warning'}>{municipality.stability ?? 'unstable'}</StatusBadge></Paragraph>
                         </HeadingGroup>
                     </div>
-                    <div>
+                    <div className={"sticky-bar-item"}>
+                        <FormField>
+                            <FormLabel htmlFor={"search-query"}>Zoeken:</FormLabel>
+                            <Textbox id={"search-query"} onKeyUp={handleSearch} placeholder={"Zoekterm"}/>
+                        </FormField>
+                    </div>
+                    <div className={"sticky-bar-item"}>
                         <Fieldset>
                             <FieldsetLegend>
                                 <FormLabel htmlFor={"municipality-select"}>Selecteer gemeente:</FormLabel>
@@ -53,7 +70,7 @@ function App() {
                 </header>
 
                 <div className={"content-wrapper"}>
-                    <Publications municipality={municipality}/>
+                    <Publications municipality={municipality} searchQuery={query}/>
                 </div>
             </div>
         </>

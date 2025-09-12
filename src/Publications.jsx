@@ -12,7 +12,7 @@ import {
 } from "@utrecht/component-library-react/dist/css-module";
 
 const Publications = (attributes) => {
-    const {municipality} = attributes;
+    const {municipality, searchQuery} = attributes;
     const [publications, setPublications] = useState([])
 
     if (!municipality) {
@@ -20,11 +20,11 @@ const Publications = (attributes) => {
     }
 
     useEffect(() => {
-        getPublicationsByMunicipality(name).then(publications => {
+        getPublicationsByMunicipality(name, searchQuery).then(publications => {
             console.log(publications.record)
             setPublications(publications.record)
         })
-    }, [name = municipality.name]);
+    }, [name = municipality.name, searchQuery]);
 
     return (municipality && publications.length > 0 && publications.map((publication) => (
             <>

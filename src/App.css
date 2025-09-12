@@ -11,6 +11,11 @@ body {
     z-index: 100;
     display: flex;
     gap: 2rem;
+    background-color: #fff;
+}
+
+.sticky-bar-item:last-child {
+    margin-left: auto;
 }
 
 .content-wrapper {
