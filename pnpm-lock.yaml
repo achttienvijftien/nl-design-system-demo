@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@gemeente-rotterdam/design-tokens':
+        specifier: 1.0.0-alpha.51
+        version: 1.0.0-alpha.51
       '@nl-design-system-unstable/amsterdam-design-tokens':
         specifier: 1.0.0-alpha.181
         version: 1.0.0-alpha.181
@@ -427,6 +430,9 @@ packages:
 
   '@fontsource/roboto@4.5.8':
     resolution: {integrity: sha512-CnD7zLItIzt86q4Sj3kZUiLcBk1dSk81qcqgMGaZe7SQ1P8hFNxhMl5AZthK1zrDM5m74VVhaOpuMGIL4gagaA==}
+
+  '@gemeente-rotterdam/design-tokens@1.0.0-alpha.51':
+    resolution: {integrity: sha512-BhF3vm35446MspitaVgoUQgdndOpMiQIYs2l6KLNxzTXMxcIbgQlIIGpJZV1EOhmQPN+gg3VwLFiZ6fuQNgQfQ==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1939,6 +1945,8 @@ snapshots:
   '@fontsource/open-sans@4.5.14': {}
 
   '@fontsource/roboto@4.5.8': {}
+
+  '@gemeente-rotterdam/design-tokens@1.0.0-alpha.51': {}
 
   '@humanfs/core@0.19.1': {}
 

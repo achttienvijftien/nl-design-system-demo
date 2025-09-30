@@ -22,7 +22,7 @@ let getPublicationsByMunicipality = async function (municipalityName, searchQuer
 
     return await axios.get(baseUri + '?' + params.toString())
         .then(response => {
-            return response.data.searchRetrieveResponse?.records ?? [];
+            return response.data?.searchRetrieveResponse ?? [];
         })
 }
 

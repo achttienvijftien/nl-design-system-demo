@@ -19,13 +19,42 @@ body {
 }
 
 .content-wrapper {
+    max-width: 74rem;
+    margin: 0 auto;
     padding: 1rem;
 }
 
+.results-header-group {
+}
+
 .publication {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+}
+
+.publication-label {
+    margin: 0 0 .5rem;
 }
 
 .publication-meta {
     margin: .5rem 0;
+}
+
+.publication-meta dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.publication-download {
+    margin: 1rem 0;
+}
+
+.publication-download .publication-download-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: .5rem;
+}
+
+.publication-download .publication-download-icon svg {
+    fill: currentColor;
 }
