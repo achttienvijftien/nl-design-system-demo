@@ -50,6 +50,9 @@ importers:
       '@nl-design-system-unstable/haarlemmermeer-design-tokens':
         specifier: ^1.0.0
         version: 1.0.0
+      '@nl-design-system-unstable/hoeksche-waard-design-tokens':
+        specifier: ^1.1.0
+        version: 1.1.0
       '@nl-design-system-unstable/hoorn-design-tokens':
         specifier: ^1.0.0
         version: 1.0.0
@@ -510,6 +513,9 @@ packages:
 
   '@nl-design-system-unstable/haarlemmermeer-design-tokens@1.0.0':
     resolution: {integrity: sha512-8w58kEUC4z6oAriKfwqv1di3U7ZnxObfejXjngdJMyZ6MYKIznJu+cMdHlWkPr9X++6PNgBWOL/XiFLf2q4C8w==}
+
+  '@nl-design-system-unstable/hoeksche-waard-design-tokens@1.1.0':
+    resolution: {integrity: sha512-JFHr7EDjtfd83shm6ygtDEgh2LKPstWnyS29pQ7D4PtvYBqD7P/xG0qtN9PycSm0O7kLyU+FP9pOd6FqS8fESg==}
 
   '@nl-design-system-unstable/hoorn-design-tokens@1.0.0':
     resolution: {integrity: sha512-GpdGPDwTYyomMSKIbSoJA8ZXBF3jl9y479shHLp08wsMSdvYFcScSuM76DTjCGW6Ner64UOBNVRH7JAHomZICA==}
@@ -2018,6 +2024,8 @@ snapshots:
   '@nl-design-system-unstable/haarlem-design-tokens@1.0.0': {}
 
   '@nl-design-system-unstable/haarlemmermeer-design-tokens@1.0.0': {}
+
+  '@nl-design-system-unstable/hoeksche-waard-design-tokens@1.1.0': {}
 
   '@nl-design-system-unstable/hoorn-design-tokens@1.0.0': {}
 

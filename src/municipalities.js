@@ -11,6 +11,7 @@ import '@nl-design-system-unstable/epe-design-tokens/dist/theme.css'
 import '@nl-design-system-unstable/groningen-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/haarlem-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/haarlemmermeer-design-tokens/dist/index.css'
+import '@nl-design-system-unstable/hoeksche-waard-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/hoorn-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/horstaandemaas-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/leiden-design-tokens/dist/index.css'
@@ -44,6 +45,7 @@ export let municipalities = [
     {name: 'Groningen', theme: 'groningen-theme', stability: 'unstable'},
     {name: 'Haarlem', theme: 'haarlem-theme', stability: 'unstable'},
     {name: 'Haarlemmermeer', theme: 'haarlemmermeer-theme', stability: 'unstable'},
+    {name: 'Hoeksche Waard', theme: 'hoeksche-waard-theme', stability: 'unstable'},
     {name: 'Hoorn', theme: 'hoorn-theme', stability: 'unstable'},
     {name: 'Horst aan de Maas', theme: 'horstaandemaas-theme', stability: 'unstable'},
     {name: 'Leiden', theme: 'leiden-theme', stability: 'unstable'},
