@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import './App.css'
 import {
-    Alert,
+    ButtonGroup,
     Fieldset,
     FieldsetLegend,
     FormField,
@@ -9,15 +9,18 @@ import {
     Heading2,
     HeadingGroup,
     Paragraph,
+    SecondaryActionButton,
     Select,
     SelectOption,
-    StatusBadge
+    SpotlightSection,
+    StatusBadge,
+    Textbox
 } from '@utrecht/component-library-react/dist/css-module'
 import {municipalities} from './municipalities'
 import {randomNumber} from "./utils"
 import Publications from "./Publications";
-import {Textbox} from "@utrecht/component-library-react";
 import {useDebouncedCallback} from "use-debounce";
+import {PrimaryActionButton} from "@utrecht/component-library-react";
 
 function App() {
     const [municipality, setMunicipality] = useState(municipalities[randomNumber(0, municipalities.length - 1)])
@@ -44,12 +47,6 @@ function App() {
                         </HeadingGroup>
                     </div>
                     <div className={"sticky-bar-item"}>
-                        <FormField>
-                            <FormLabel htmlFor={"search-query"}>Zoeken:</FormLabel>
-                            <Textbox id={"search-query"} onKeyUp={handleSearch} placeholder={"Zoekterm"}/>
-                        </FormField>
-                    </div>
-                    <div className={"sticky-bar-item"}>
                         <Fieldset>
                             <FieldsetLegend>
                                 <FormLabel htmlFor={"municipality-select"}>Selecteer gemeente:</FormLabel>
@@ -71,6 +68,24 @@ function App() {
                 </header>
 
                 <div className={"content-wrapper"}>
+                    <SpotlightSection type={"info"} className={"search-section"}>
+                        <Fieldset>
+                            <FieldsetLegend>
+                                <FormLabel htmlFor={"search-query"}>Zoeken:</FormLabel>
+                            </FieldsetLegend>
+                            <FormField>
+                                <Textbox id={"search-query"} onKeyUp={handleSearch} placeholder={"Zoekterm"}/>
+                            </FormField>
+                        </Fieldset>
+                        <ButtonGroup direction={"row"}>
+                            <PrimaryActionButton>
+                                Zoek
+                            </PrimaryActionButton>
+                            <SecondaryActionButton onClick={() => setQuery('')}>
+                                Zoek opnieuw
+                            </SecondaryActionButton>
+                        </ButtonGroup>
+                    </SpotlightSection>
                     <Publications municipality={municipality} searchQuery={query}/>
                 </div>
             </div>

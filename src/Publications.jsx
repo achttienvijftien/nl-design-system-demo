@@ -39,8 +39,9 @@ const Publications = (attributes) => {
     }, [name = municipality.name, searchQuery]);
 
     return (municipality &&
-        <>
-            <HeadingGroup className={"results-header-group"}><Heading2>Zoekresultaten</Heading2><NumberBadge>{meta.numberOfRecords} resultaten</NumberBadge></HeadingGroup>
+        <div className={"publications"}>
+            <HeadingGroup
+                className={"results-header-group"}><Heading2>Zoekresultaten</Heading2><NumberBadge>{meta.numberOfRecords} resultaten</NumberBadge></HeadingGroup>
             {publications.length > 0
                 ? <>
                     {
@@ -48,7 +49,8 @@ const Publications = (attributes) => {
                             <>
                                 <div id={publication.recordData.gzd.originalData.meta.owmskern.identifier}
                                      className={"publication"}>
-                                    <DataBadge className={"publication-label"}>{publication.recordData.gzd.originalData.meta.owmskern.type.$ ?? 'onbekend'}</DataBadge>
+                                    <DataBadge
+                                        className={"publication-label"}>{publication.recordData.gzd.originalData.meta.owmskern.type.$ ?? 'onbekend'}</DataBadge>
                                     <Heading3 className={"publication-title"}>
                                         {publication.recordData.gzd.originalData.meta.owmskern.title}
                                     </Heading3>
@@ -80,13 +82,13 @@ const Publications = (attributes) => {
                                         Download PDF
                                     </ButtonLink>
                                 </div>
-                                <Separator className={"publication-separator"}/>
+                                { publications.indexOf(publication) < publications.length - 1 && <Separator className={"publication-separator"}/>}
                             </>
                         ))
                     }
                 </>
                 : <Heading3>Geen resultaten gevonden</Heading3>}
-        </>
+        </div>
     )
 }
 
