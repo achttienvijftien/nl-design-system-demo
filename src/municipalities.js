@@ -1,5 +1,6 @@
 import '@gemeente-rotterdam/design-tokens/dist/index.css'
 import '@nl-design-system-unstable/amsterdam-design-tokens/dist/index.css'
+import '@nl-design-system-unstable/basis-design-tokens/dist/theme.css'
 import '@nl-design-system-unstable/bodegraven-reeuwijk-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/borne-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/buren-design-tokens/dist/index.css'
@@ -22,6 +23,7 @@ import '@nl-design-system-unstable/stedebroec-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/tilburg-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/tubbergen-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/venray-design-tokens/dist/index.css'
+import '@nl-design-system-unstable/voorbeeld-design-tokens/dist/theme.css'
 import '@nl-design-system-unstable/vught-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/westervoort-design-tokens/dist/index.css'
 import '@nl-design-system-unstable/zevenaar-design-tokens/dist/index.css'
@@ -30,6 +32,7 @@ import '@utrecht/design-tokens/dist/index.css'
 
 export let municipalities = [
     {name: 'Amsterdam', theme: 'amsterdam-theme', stability: 'unstable'},
+    {name: 'Basis thema', theme: 'basis-theme', stability: 'unstable'},
     {name: 'Bodegraven-Reeuwijk', theme: 'bodegraven-theme', stability: 'unstable'},
     {name: 'Borne', theme: 'borne-theme', stability: 'unstable'},
     {name: 'Buren', theme: 'buren-theme', stability: 'unstable'},
@@ -55,6 +58,7 @@ export let municipalities = [
     {name: 'Tubbergen', theme: 'tubbergen-theme', stability: 'unstable'},
     {name: 'Utrecht', theme: 'utrecht-theme', stability: 'stable'},
     {name: 'Venray', theme: 'venray-theme', stability: 'unstable'},
+    {name: 'Voorbeeld thema', theme: 'voorbeeld-theme', stability: 'unstable'},
     {name: 'Vught', theme: 'vught-theme', stability: 'unstable'},
     {name: 'Westervoort', theme: 'westervoort-theme', stability: 'unstable'},
     {name: 'Zevenaar', theme: 'zevenaar-theme', stability: 'unstable'},
