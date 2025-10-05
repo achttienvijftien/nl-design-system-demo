@@ -40,7 +40,7 @@ function App() {
                     <div className={"sticky-bar-item"}>
                         <HeadingGroup>
                             <Heading2>NL Design System Demo</Heading2>
-                            <Paragraph>Huidige
+                            <Paragraph className={"current-municipality"}>Huidige
                                 gemeente: <strong>{municipality.name}</strong>
                                 <StatusBadge
                                     status={'stable' === (municipality.stability ?? 'unstable') ? 'safe' : 'warning'}>{municipality.stability ?? 'unstable'}</StatusBadge></Paragraph>
