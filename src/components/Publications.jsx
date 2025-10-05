@@ -11,6 +11,7 @@ import {
     Heading2,
     Heading3,
     HeadingGroup,
+    Link,
     Icon,
     NumberBadge,
     Separator
@@ -30,7 +31,7 @@ const Publications = (attributes) => {
     if (!municipality) {
         return null
     }
-console.log(currentPage)
+    console.log(currentPage)
     useEffect(() => {
         getPublicationsByMunicipality(name, searchQuery, currentPage, recordsPerPage).then(response => {
             const publications = Array.isArray(response.records.record) ? response.records.record : [response.records.record];
@@ -58,7 +59,9 @@ console.log(currentPage)
                                     <DataBadge
                                         className={"publication-label"}>{publication.recordData.gzd.originalData.meta.owmskern.type.$ ?? 'onbekend'}</DataBadge>
                                     <Heading3 className={"publication-title"}>
-                                        {publication.recordData.gzd.originalData.meta.owmskern.title}
+                                        <Link
+                                            href={"https://zoek.officielebekendmakingen.nl/" + publication.recordData.gzd.originalData.meta.owmskern.identifier + ".html"}
+                                            target={"_blank"}>{publication.recordData.gzd.originalData.meta.owmskern.title}</Link>
                                     </Heading3>
                                     <Document className={"publication-meta"}>
                                         <DataList>
@@ -93,7 +96,8 @@ console.log(currentPage)
                             </>
                         ))
                     }
-                    <Pagination totalPages={meta.totalPages} currentIndex={currentPage} onClick={(page) => setCurrentPage(page)}></Pagination>
+                    <Pagination totalPages={meta.totalPages} currentIndex={currentPage}
+                                onClick={(page) => setCurrentPage(page)}></Pagination>
                 </>
                 : <Heading3>Geen resultaten gevonden</Heading3>}
         </div>
