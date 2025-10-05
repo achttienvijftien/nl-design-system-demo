@@ -4,7 +4,7 @@ let randomNumber = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let getPublicationsByMunicipality = async function (municipalityName, searchQuery) {
+let getPublicationsByMunicipality = async function (municipalityName, searchQuery, currentPage, recordsPerPage) {
     const baseUri = 'https://repository.overheid.nl/sru'
     let query = 'c.product-area=="officielepublicaties" AND (w.gemeente=="' + municipalityName + '" OR dt.creator=="' + municipalityName + '")'
 
@@ -17,7 +17,8 @@ let getPublicationsByMunicipality = async function (municipalityName, searchQuer
 
     const params = new URLSearchParams({
         query: query,
-        maximumRecords: 10,
+        maximumRecords: recordsPerPage,
+        startRecord: currentPage * recordsPerPage,
     })
 
     return await axios.get(baseUri + '?' + params.toString())

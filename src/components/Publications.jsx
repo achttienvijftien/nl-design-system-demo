@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getPublicationsByMunicipality} from "./utils";
+import {getPublicationsByMunicipality} from "../utils.js";
 import {
     ButtonLink,
     DataBadge,
@@ -15,28 +15,34 @@ import {
     NumberBadge,
     Separator
 } from "@utrecht/component-library-react/dist/css-module";
+import Pagination from "./Pagination";
 
 const Publications = (attributes) => {
+    const recordsPerPage = 10;
     const {municipality, searchQuery} = attributes;
     const [publications, setPublications] = useState([])
     const [meta, setMeta] = useState({
+        totalPages: 0,
         numberOfRecords: 0,
     })
+    const [currentPage, setCurrentPage] = useState(1);
 
     if (!municipality) {
         return null
     }
-
+console.log(currentPage)
     useEffect(() => {
-        getPublicationsByMunicipality(name, searchQuery).then(response => {
+        getPublicationsByMunicipality(name, searchQuery, currentPage, recordsPerPage).then(response => {
             const publications = Array.isArray(response.records.record) ? response.records.record : [response.records.record];
+            const numberOfRecords = response.numberOfRecords ?? 0;
 
             setPublications(publications ?? [])
             setMeta({
-                numberOfRecords: response.numberOfRecords ?? 0,
+                numberOfRecords: numberOfRecords,
+                totalPages: Math.ceil(response.numberOfRecords / recordsPerPage),
             })
         })
-    }, [name = municipality.name, searchQuery]);
+    }, [name = municipality.name, searchQuery, currentPage, recordsPerPage]);
 
     return (municipality &&
         <div className={"publications"}>
@@ -82,10 +88,12 @@ const Publications = (attributes) => {
                                         Download PDF
                                     </ButtonLink>
                                 </div>
-                                { publications.indexOf(publication) < publications.length - 1 && <Separator className={"publication-separator"}/>}
+                                {publications.indexOf(publication) < publications.length - 1 &&
+                                    <Separator className={"publication-separator"}/>}
                             </>
                         ))
                     }
+                    <Pagination totalPages={meta.totalPages} currentIndex={currentPage} onClick={(page) => setCurrentPage(page)}></Pagination>
                 </>
                 : <Heading3>Geen resultaten gevonden</Heading3>}
         </div>

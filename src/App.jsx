@@ -18,7 +18,7 @@ import {
 } from '@utrecht/component-library-react/dist/css-module'
 import {municipalities} from './municipalities'
 import {randomNumber} from "./utils"
-import Publications from "./Publications";
+import Publications from "./components/Publications.jsx";
 import {useDebouncedCallback} from "use-debounce";
 import {PrimaryActionButton} from "@utrecht/component-library-react";
 
